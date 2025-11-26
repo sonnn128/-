@@ -10,7 +10,7 @@ services:
       - MYSQL_PASSWORD=greenbook123
       - MYSQL_ROOT_PASSWORD=rootpassword
     volumes:
-      - ./src/main/resources/sql:/docker-entrypoint-initdb.d
+      - ./data/mysql:/var/lib/mysql
       - ./database.sql:/docker-entrypoint-initdb.d/database.sql
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
