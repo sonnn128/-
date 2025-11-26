@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=greenbook
+      - MYSQL_USER=greenbook
+      - MYSQL_PASSWORD=greenbook123
+      - MYSQL_ROOT_PASSWORD=rootpassword
+    volumes:
+      - greenbook-mysql-data:/var/lib/mysql
+      - ./src/main/resources/sql:/docker-entrypoint-initdb.d
+
+volumes:
+  greenbook-mysql-data:
